@@ -2,7 +2,17 @@
 
 ## Overview
 
-This is a short guide that explains how to configure ESPresence to track devices using their IRKs and how to configure Home Assistant to display the presence of the devices.
+This is a short guide that explains how to configure ESPresence to track the presence of an Apple Watch using its IRK and publish it to the MQTT Broker. Additionally it expains how to allow HomeAssistant to access the presence of the device from the MQTT broker.
+
+## Prerequisites
+
+1. A MQTT broker running on the network
+2. ESPresence firmware flashed to an ESP32 device
+3. ESP32 device connected to the network
+4. ESP32 device configured to connect to an MQTT broker
+5. Home Assistant instance running
+6. Home Assistant configured to connect to the MQTT broker (using the MQTT integration)
+7. A Mac with the logged into the same iCloud account as the Apple Watch
 
 ## Step 1: Find The IRKS of the devices to be tracked
  
@@ -15,7 +25,7 @@ This is a short guide that explains how to configure ESPresence to track devices
 
 #### Step 2: Find the IRK of the Apple Watch
 
-1. Open Keychain Access On Mac
+1. Open Keychain Access On Mac ( `Cmd + Space` and search for `Keychain Access`)
 2. Got to iCloud Keychain
 3. Search for `Bluetooth`
 4. Click through the entries until you find the one with the Bluetooth address of the Apple Watch
@@ -28,12 +38,16 @@ This is a short guide that explains how to configure ESPresence to track devices
 
 NOTE: This is assuming that the ESPresence firmware has already been flashed to the ESP32 and the device is connected to the network and configured to connect to the MQTT broker.
 
+In order to track the device and publish its presence to the MQTT broker, the IRK of the device must be added to the ESPresence configuration. With devices other than the Apple Watch/iPhone you may be able to use the device's Bluetooth MAC address instead of the IRK, but YMMV.
+
 1. Navigate to the device's web interface using its IP address
 2. Scroll down to the `Scanning` section
 3. Add the IRKs of the devices to be tracked in the `Known BLE identity resolving keys` field
-4. Click `Save`
+4. Click `Save` and then `Restart`
 
-## Step 4: Home Assistant Configuration
+## Step 3: Home Assistant Configuration
+
+Inorder to access the room which the device is in from mqtt, you need to manually add the sensor to the `configuration.yaml` file.
 
 1. SSH into the Home Assistant instance and navigate to the `config` directory
 2. Enter the following command to add the IRK to the homeassistant configuration
