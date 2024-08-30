@@ -1,0 +1,17 @@
+.pioenvs
+.piolibdeps
+.clang_complete
+.gcc-flags.json
+.dblite
+Settings_*.h
+.pio
+.vscode
+.scripts
+.DS_Store
+cmake-build-*
+build/
+CMakeLists.txt
+CMakeListsPrivate.txt
+platformio_override.ini
+node_modules
+src/build_timestamp_value.h
