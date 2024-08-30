@@ -1,13 +1,13 @@
-# ESPresence Configuration
+# ESPresense Configuration
 
 ## Overview
 
-This is a short guide that explains how to configure ESPresence to track the presence of an Apple Watch using its IRK and publish it to the MQTT Broker. Additionally it expains how to allow HomeAssistant to access the presence of the device from the MQTT broker.
+This is a short guide that explains how to configure ESPresense to track the presence of an Apple Watch using its IRK and publish it to the MQTT Broker. Additionally it expains how to allow HomeAssistant to access the presence of the device from the MQTT broker.
 
 ## Prerequisites
 
 1. A MQTT broker running on the network
-2. ESPresence firmware flashed to an ESP32 device
+2. ESPresense firmware flashed to an ESP32 device
 3. ESP32 device connected to the network
 4. ESP32 device configured to connect to an MQTT broker
 5. Home Assistant instance running
@@ -17,6 +17,7 @@ This is a short guide that explains how to configure ESPresence to track the pre
 ## Step 1: Find The IRKS of the devices to be tracked
  
 ### Apple Watch
+
 
 #### Step 1: Find the Bluetooth Address of the Apple Watch
 
@@ -34,11 +35,11 @@ This is a short guide that explains how to configure ESPresence to track the pre
 7. Convert the password to an IRK by opening the `DecodeAppleIRK.html` file in a browser and pasting the XML into the input field.
 8. Copy the IRK value from the output field
 
-## Step 2: Configure ESPresence to track the device
+## Step 2: Configure ESPresense to track the device
 
-NOTE: This is assuming that the ESPresence firmware has already been flashed to the ESP32 and the device is connected to the network and configured to connect to the MQTT broker.
+NOTE: This is assuming that the ESPresense firmware has already been flashed to the ESP32 and the device is connected to the network and configured to connect to the MQTT broker.
 
-In order to track the device and publish its presence to the MQTT broker, the IRK of the device must be added to the ESPresence configuration. With devices other than the Apple Watch/iPhone you may be able to use the device's Bluetooth MAC address instead of the IRK, but YMMV.
+In order to track the device and publish its presence to the MQTT broker, the IRK of the device must be added to the ESPresense configuration. With devices other than the Apple Watch/iPhone you may be able to use the device's Bluetooth MAC address instead of the IRK, but YMMV.
 
 1. Navigate to the device's web interface using its IP address
 2. Scroll down to the `Scanning` section
